@@ -358,7 +358,7 @@ footer a:hover{color:#fff}
 .plan-box .rm:hover{fill:rgba(195,173,139,.38);stroke:var(--sand-d)}
 .plan-box .rm.has{cursor:pointer}
 .plan-box .rm.has:hover{fill:rgba(36,54,41,.22);stroke:var(--green)}
-.plan-box .rm.sel{fill:rgba(36,54,41,.28);stroke:var(--green)}
+.plan-box .rm.sel,.plan-box .rm.has.sel:hover{fill:rgba(36,54,41,.3);stroke:var(--green);stroke-width:5}
 .plan-box .dot{fill:var(--green);stroke:#fff;stroke-width:3;pointer-events:none}
 .plan-tip{position:absolute;pointer-events:none;background:var(--green);color:#fff;font-size:13px;padding:6px 10px;border-radius:4px;white-space:nowrap;opacity:0;transform:translate(-50%,-130%);transition:opacity .15s;z-index:3}
 .plan-tip.show{opacity:1}
@@ -367,7 +367,11 @@ footer a:hover{color:#fff}
 .planx-r .cap{position:absolute;left:0;right:0;bottom:0;padding:60px 24px 22px;background:linear-gradient(transparent,rgba(12,18,14,.8));color:#fff}
 .planx-r .cap b{font-family:var(--serif);font-weight:400;font-size:26px;display:block}
 .planx-r .cap span{font-size:14px;opacity:.85}
-.plan-legend{display:flex;gap:16px;margin-top:12px;font-size:13px;color:var(--muted)}
+.plan-legend{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-top:12px;font-size:13px;color:var(--muted)}
+.plan-nav{display:flex;align-items:center;gap:8px}
+.plan-nav button{width:40px;height:40px;border:1px solid var(--line);border-radius:var(--r);font-size:18px;background:#fff}
+.plan-nav button:hover{background:var(--paper)}
+.plan-nav span{min-width:44px;text-align:center}
 .plan-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--green);margin-right:6px;vertical-align:middle}
 
 /* карта кварталов */
@@ -717,11 +721,11 @@ a{text-underline-offset:3px}
     <div class="planx rv" id="planx">
       <div class="planx-l">
         <div class="planx-top">
-          <div><h3>Пример планировки</h3><p>Конкретную спроектируем под&nbsp;ваш сценарий жизни. Наведите на&nbsp;комнату, нажмите&nbsp;— покажем визуализацию.</p></div>
+          <div><h3>Пример планировки</h3><p>Конкретную спроектируем под&nbsp;ваш сценарий жизни. Нажмите на&nbsp;комнату или листайте стрелками&nbsp;— покажем визуализацию.</p></div>
           <div class="floors" id="floors"></div>
         </div>
         <div class="plan-box" id="planBox"><img id="planImg" src="img/plan250-1.jpg" alt="Планировка"><svg id="planSvg"></svg><div class="plan-tip" id="planTip"></div></div>
-        <div class="plan-legend"><span><i></i>есть визуализация</span></div>
+        <div class="plan-legend"><span><i></i>есть визуализация</span><div class="plan-nav" id="planNav"><button id="rPrev" aria-label="Предыдущее помещение">←</button><span id="rCount"></span><button id="rNext" aria-label="Следующее помещение">→</button></div></div>
       </div>
       <div class="planx-r"><img id="vizImg" src="img/gostinaya.jpg" alt=""><div class="cap"><b id="vizName">Кухня-гостиная</b><span id="vizSub">48,1 м² · вариант интерьера</span></div></div>
     </div>
@@ -1110,12 +1114,38 @@ function drawPlan(){
     el.onmouseenter=()=>{tip.textContent=r[0]+(r[1]?' · '+r[1]:'')+(r[6]?' — нажмите':'');tip.classList.add('show')};
     el.onmousemove=e=>{const b=box.getBoundingClientRect();tip.style.left=(e.clientX-b.left)+'px';tip.style.top=(e.clientY-b.top)+'px'};
     el.onmouseleave=()=>tip.classList.remove('show');
-    if(r[6])el.onclick=()=>{sv.querySelectorAll('.rm').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');showViz(r[6],r[0],(r[1]?r[1]+' · ':'')+'вариант интерьера')};
+    if(r[6])el.onclick=()=>selRoom(+el.dataset.i);
   });
-  const first=F.rooms.find(r=>r[6]);
-  if(first)showViz(first[6],first[0],(first[1]?first[1]+' · ':'')+'вариант интерьера');
+  // помещения с визуализацией слева направо по центру комнаты, при равенстве - сверху вниз
+  ORDER=F.rooms.map((r,i)=>[r,i]).filter(([r])=>r[6]).sort((a,b)=>(a[0][2]+a[0][4]/2)-(b[0][2]+b[0][4]/2)||a[0][3]-b[0][3]).map(([,i])=>i);
+  document.getElementById('planNav').style.visibility=ORDER.length?'':'hidden';
+  if(ORDER.length)selRoom(ORDER[atEnd?ORDER.length-1:0]);
   else if(P.viz)showViz(...P.viz);
+  atEnd=false;
 }
+let ORDER=[],atEnd=false;
+function selRoom(i){
+  const F=PLANS[HOUSES[cur].plan].floors[floor],r=F.rooms[i];
+  document.querySelectorAll('#planSvg .rm').forEach(x=>x.classList.toggle('sel',+x.dataset.i===i));
+  document.getElementById('rCount').textContent=(ORDER.indexOf(i)+1)+' / '+ORDER.length;
+  showViz(r[6],r[0],(r[1]?r[1]+' · ':'')+'вариант интерьера');
+}
+// стрелки: по помещениям этажа, на краю - на соседний этаж
+function stepRoom(d){
+  const P=PLANS[HOUSES[cur].plan];if(!ORDER.length)return;
+  const sel=document.querySelector('#planSvg .rm.sel'),k=ORDER.indexOf(sel?+sel.dataset.i:ORDER[0])+d;
+  if(k>=0&&k<ORDER.length)return selRoom(ORDER[k]);
+  const nf=floor+d;
+  if(nf>=0&&nf<P.floors.length&&P.floors[nf].rooms.some(r=>r[6])){floor=nf;atEnd=d<0;drawPlan()}
+  else selRoom(ORDER[(k+ORDER.length)%ORDER.length]);
+}
+document.getElementById('rPrev').onclick=()=>stepRoom(-1);
+document.getElementById('rNext').onclick=()=>stepRoom(1);
+document.addEventListener('keydown',e=>{
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight'||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;
+  const b=document.getElementById('planx').getBoundingClientRect();
+  if(b.top<innerHeight*.6&&b.bottom>innerHeight*.4){e.preventDefault();stepRoom(e.key==='ArrowRight'?1:-1)}
+});
 function showViz(src,name,sub){
   const im=document.getElementById('vizImg');im.style.opacity=0;
   setTimeout(()=>{im.src=src;im.onload=()=>im.style.opacity=1},180);
