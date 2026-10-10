@@ -727,7 +727,7 @@ a{text-underline-offset:3px}
         <div class="plan-box" id="planBox"><img id="planImg" src="img/plan250-1.jpg" alt="Планировка"><svg id="planSvg"></svg><div class="plan-tip" id="planTip"></div></div>
         <div class="plan-legend"><span><i></i>есть визуализация</span><div class="plan-nav" id="planNav"><button id="rPrev" aria-label="Предыдущее помещение">←</button><span id="rCount"></span><button id="rNext" aria-label="Следующее помещение">→</button></div></div>
       </div>
-      <div class="planx-r"><img id="vizImg" src="img/gostinaya.jpg" alt=""><div class="cap"><b id="vizName">Кухня-гостиная</b><span id="vizSub">48,1 м² · вариант интерьера</span></div></div>
+      <div class="planx-r"><img id="vizImg" src="img/gostinaya.jpg" alt=""><div class="cap"><b id="vizName">Гостиная</b><span id="vizSub">кухня-гостиная 48,1 м² · вариант интерьера</span></div></div>
     </div>
   </div>
 </section>
@@ -1016,7 +1016,8 @@ const HOUSES={
 const PLANS={
   p250:{floors:[
     {t:'1 этаж',img:'img/plan250-1.jpg',w:1080,h:1350,rooms:[
-      ['Кухня-гостиная','48,1 м²',612,432,250,346,'img/gostinaya.jpg'],
+      ['Гостиная','кухня-гостиная 48,1 м²',612,432,250,198,'img/gostinaya.jpg'],
+      ['Кухня-столовая','кухня-гостиная 48,1 м²',612,630,250,148,'img/kuhnya.jpg'],
       ['Костровая зона','75,0 м²',236,432,374,346,'img/hero.jpg'],
       ['Крытая терраса','30 м²',545,208,317,224,'img/terrasa.jpg'],
       ['Спальня','15,0 м²',672,945,190,190,null],['Прихожая','13,2 м²',195,780,160,135,null],['Холл','11,7 м²',355,780,315,135,null],
@@ -1025,7 +1026,7 @@ const PLANS={
       ['Мастер-спальня','17,4 м²',130,845,160,250,'img/master.jpg'],
       ['Детская','16,4 м²',735,785,220,160,'img/detskaya.jpg'],
       ['Детская','12,8 м²',735,950,220,145,'img/detskaya.jpg'],
-      ['Второй свет над гостиной','',660,432,255,350,'img/kuhnya.jpg'],
+      ['Второй свет над гостиной','',660,432,255,350,'img/gostinaya.jpg'],
       ['Кабинет','12,0 м²',432,785,160,135,null],['С/у','8,9 м²',290,785,140,135,null],['С/у','7,1 м²',610,785,120,135,null],
       ['Холл','14,9 м²',430,920,305,170,null],['Балкон','4,4 м²',130,780,140,60,null]]}]},
   p200_1:{floors:[
