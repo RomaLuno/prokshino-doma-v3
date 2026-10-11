@@ -84,6 +84,15 @@ nav a:hover{opacity:1;color:var(--sand-d)}
 .shape .n small{font-size:.4em;letter-spacing:0;margin-left:6px}
 .shape p{position:relative;margin-top:12px;font-size:16px;max-width:220px}
 .shapes-note{margin-top:40px;color:var(--muted);font-size:17px}
+.near{margin-top:72px}.near h3{font-size:clamp(28px,2.6vw,44px);margin-bottom:28px}
+.near-g{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.near-g>div{padding:28px 24px 8px 0;border-right:1px solid var(--line);margin-right:24px}
+.near-g>div:last-child{border-right:0;margin-right:0}
+.near-g b{display:block;font-weight:500;font-size:clamp(48px,4.4vw,72px);line-height:1;letter-spacing:-.03em;color:var(--green)}
+.near-g b small{font-size:.38em;margin-left:6px;letter-spacing:0}
+.near-g span{display:block;font-size:20px;font-weight:600;margin:12px 0 8px}
+.near-g p{font-size:17px;color:var(--muted);max-width:300px}
+@media (max-width:900px){.near-g{grid-template-columns:1fr 1fr;gap:0}.near-g>div{border-right:0;margin-right:0;border-bottom:1px solid var(--line);padding-bottom:24px}}
 
 /* карта */
 .map{background:var(--paper);border-radius:var(--r);display:grid;grid-template-columns:1fr 1.15fr;overflow:hidden}
@@ -583,9 +592,9 @@ a{text-underline-offset:3px}
       <h1>Свой дом у&nbsp;вековой дубравы</h1>
       <div class="hh-bot">
         <ul class="hh-utp">
+          <li><svg viewBox="0 0 24 24"><path d="M12 2s-6 5.6-6 11a6 6 0 0 0 12 0c0-2.5-1.3-4.9-2.6-6.6-.4 1.6-1.4 3-2.9 3.6C12.8 7.4 12 2 12 2zm0 18a3 3 0 0 1-3-3c0-1.7 1.6-3.6 3-5 1.4 1.4 3 3.3 3 5a3 3 0 0 1-3 3z"/></svg><span>Магистральный газ и&nbsp;все коммуникации уже в&nbsp;цене</span></li>
           <li><svg viewBox="0 0 24 24"><path d="M12 2c-3 0-5.5 2.4-5.5 5.3 0 .8.2 1.5.5 2.2A4.6 4.6 0 0 0 4 13.8C4 16.4 6.2 18.5 9 18.5h2V22h2v-3.5h2c2.8 0 5-2.1 5-4.7a4.6 4.6 0 0 0-3-4.3c.3-.7.5-1.4.5-2.2C17.5 4.4 15 2 12 2z"/></svg><span>Дубрава 41&nbsp;га&nbsp;— сразу за&nbsp;забором</span></li>
           <li><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16zm-1 3v6l5 3 1-1.7-4-2.4V7z"/></svg><span>Дом за&nbsp;6&nbsp;месяцев</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M12 2s-6 5.6-6 11a6 6 0 0 0 12 0c0-2.5-1.3-4.9-2.6-6.6-.4 1.6-1.4 3-2.9 3.6C12.8 7.4 12 2 12 2zm0 18a3 3 0 0 1-3-3c0-1.7 1.6-3.6 3-5 1.4 1.4 3 3.3 3 5a3 3 0 0 1-3 3z"/></svg><span>Магистральный газ уже в&nbsp;цене</span></li>
         </ul>
         <div class="hh-r">
           <p>Дома 200–500&nbsp;м² с&nbsp;участком в&nbsp;Новой Москве. 8&nbsp;минут до&nbsp;метро Прокшино.</p>
@@ -774,6 +783,15 @@ a{text-underline-offset:3px}
         <div class="ph"><img src="img/zakat.jpg" alt="Дом на закате" loading="lazy"></div>
         <svg class="f" viewBox="0 0 100 110" preserveAspectRatio="none"><path pathLength="100" d="M28 1h44l27 108H1z"/></svg>
         <div class="tx"><div class="n" data-to="12">12<small>мин</small></div><p>до&nbsp;МКАД по&nbsp;Киевскому шоссе</p></div>
+      </div>
+    </div>
+    <div class="near rv">
+      <h3>Всё необходимое&nbsp;— в&nbsp;соседнем квартале</h3>
+      <div class="near-g">
+        <div><b>23<small>мин</small></b><span>пешком до&nbsp;ВкусВилла</span><p>и&nbsp;супермаркетов «Пятёрочка», «Перекрёсток»&nbsp;— «Испанские кварталы», 1,8&nbsp;км</p></div>
+        <div><b>26<small>мин</small></b><span>пешком до&nbsp;школы и&nbsp;детских садов</span><p>школа №&nbsp;2094 и&nbsp;её дошкольная площадка, частные сады рядом</p></div>
+        <div><b>24<small>мин</small></b><span>пешком до&nbsp;аптек и&nbsp;клиник</span><p>«Столички», «Апрель», медцентры на&nbsp;бульваре Веласкеса</p></div>
+        <div><b>30<small>мин</small></b><span>пешком до&nbsp;метро Прокшино</span><p>8&nbsp;минут на&nbsp;машине, рядом школы, сады и&nbsp;кафе ЖК&nbsp;«Прокшино»</p></div>
       </div>
     </div>
   </div>
