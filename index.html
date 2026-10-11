@@ -367,8 +367,11 @@ footer a:hover{color:#fff}
 .mk{display:flex;align-items:center;gap:8px;white-space:nowrap;transform:translate(-14px,-14px)}
 .mk i{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:15px;color:#fff;background:var(--sand-d);box-shadow:0 0 0 4px rgba(255,255,255,.85)}
 .mk.home i{background:var(--green);width:34px;height:34px;font-size:16px}
-.mk b{background:#fff;padding:5px 10px;border-radius:6px;font:600 13px var(--sans);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.mk b{background:#fff;padding:5px 10px;border-radius:6px;font:600 16px var(--sans);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.12)}
 .mk b small{font-weight:400;color:var(--muted);margin-left:4px}
+.mk.near i{width:24px;height:24px;background:var(--green-2)}
+#lmap.far .mk.near b{display:none}
+.mk.near{position:relative}.mk.near b{position:absolute;left:-12px}.mk.up b{bottom:34px}.mk.dn b{top:34px}
 .leaflet-container{font-family:var(--sans)}
 
 /* солнце */
@@ -812,7 +815,7 @@ a{text-underline-offset:3px}
       <div class="map-svg">
         <div id="lmap" aria-label="Карта: участок, метро Прокшино, Хованская дубрава, Москва-Сити"></div>
         <div class="map-pins" id="mapPins">
-          <button data-p="home" class="on">Ваш дом</button><button data-p="park">Дубрава · 2 мин</button><button data-p="metro">Метро · 30 мин пешком</button><button data-p="city">Москва-Сити · 35 мин</button><button data-p="all">Все точки</button>
+          <button data-p="home" class="on">Ваш дом</button><button data-p="park">Дубрава · 2 мин</button><button data-p="metro">Метро · 30 мин пешком</button><button data-p="near">Рядом пешком</button><button data-p="city">Москва-Сити · 35 мин</button><button data-p="all">Все точки</button>
         </div>
       </div>
     </div>
@@ -1243,19 +1246,23 @@ document.querySelectorAll('.plot').forEach(p=>p.onclick=()=>{plot=+p.dataset.p;d
 // живая карта локации
 (function(){
   if(!window.L)return;
-  const IC={home:'<path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/>',park:'<path d="M12 3c-3.3 0-6 2.6-6 5.8 0 1 .3 2 .8 2.8A4.3 4.3 0 0 0 9 19.3h2V22h2v-2.7h2a4.3 4.3 0 0 0 2.2-7.7c.5-.8.8-1.8.8-2.8C18 5.6 15.3 3 12 3z"/>',metro:'<path d="M3 18h18v-1.6h-1.5L15.4 5 12 11.6 8.6 5 4.5 16.4H3zm6-8.3 3 5.4 3-5.4 2.3 6.7H6.7z"/>',city:'<path d="M5 21V8l5-3v16zm6 0V3l6 3v15zm7 0v-9l3 1.5V21z"/>'};
+  const IC={home:'<path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/>',park:'<path d="M12 3c-3.3 0-6 2.6-6 5.8 0 1 .3 2 .8 2.8A4.3 4.3 0 0 0 9 19.3h2V22h2v-2.7h2a4.3 4.3 0 0 0 2.2-7.7c.5-.8.8-1.8.8-2.8C18 5.6 15.3 3 12 3z"/>',metro:'<path d="M3 18h18v-1.6h-1.5L15.4 5 12 11.6 8.6 5 4.5 16.4H3zm6-8.3 3 5.4 3-5.4 2.3 6.7H6.7z"/>',city:'<path d="M5 21V8l5-3v16zm6 0V3l6 3v15zm7 0v-9l3 1.5V21z"/>',
+    shop:'<path d="M3 6h18l-2 9H6zM6 15l-1 4h14M8 21a1 1 0 1 0 0-.1M17 21a1 1 0 1 0 0-.1"/>',school:'<path d="M12 4 1 9l11 5 9-4.1V16h2V9zM5 13v4c0 1.7 3.1 3 7 3s7-1.3 7-3v-4l-7 3.2z"/>',pharm:'<path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/>'};
   const PTS={home:[55.6011,37.4407,'home','Ваш дом','Николо-Хованское'],park:[55.5985,37.4333,'park','Хованская дубрава','2 мин'],
-    metro:[55.5875,37.4322,'metro','Метро Прокшино','8 мин на машине · 30 пешком'],city:[55.7490,37.5387,'city','Москва-Сити','35 мин']};
+    metro:[55.5875,37.4322,'metro','Метро Прокшино','8 мин на машине · 30 пешком'],city:[55.7490,37.5387,'city','Москва-Сити','35 мин'],
+    shop:[55.5903,37.4516,'shop','ВкусВилл','23 мин','dn'],school:[55.5906,37.4539,'school','Школа № 2094','26 мин','up'],pharm:[55.5906,37.4456,'pharm','Аптеки','24–26 мин','up']};
+  const NEAR=['shop','school','pharm'];
   const m=L.map('lmap',{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([55.6011,37.4407],13);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(m);
-  Object.entries(PTS).forEach(([k,p])=>L.marker([p[0],p[1]],{icon:L.divIcon({className:'',html:`<div class="mk ${k}"><i><svg viewBox="0 0 24 24" width="16" height="16" fill="#fff">${IC[p[2]]}</svg></i><b>${p[3]}<small>${p[4]}</small></b></div>`,iconSize:[0,0]})}).addTo(m));
+  Object.entries(PTS).forEach(([k,p])=>L.marker([p[0],p[1]],{icon:L.divIcon({className:'',html:`<div class="mk ${k}${NEAR.includes(k)?' near '+p[5]:''}"><i><svg viewBox="0 0 24 24" width="16" height="16" fill="#fff">${IC[p[2]]}</svg></i><b>${p[3]}<small>${p[4]}</small></b></div>`,iconSize:[0,0]})}).addTo(m));
   L.polyline([[55.6011,37.4407],[55.5875,37.4322]],{color:'#806a4a',weight:3,dashArray:'6 8'}).addTo(m);
   m.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
   m.on('click',()=>m.scrollWheelZoom.enable());
+  const far=()=>document.getElementById('lmap').classList.toggle('far',m.getZoom()<16);far();m.on('zoomend',far);
   const all=L.latLngBounds(Object.values(PTS).map(p=>[p[0],p[1]]));
   document.querySelectorAll('#mapPins button').forEach(b=>b.onclick=()=>{
     document.querySelectorAll('#mapPins button').forEach(x=>x.classList.toggle('on',x===b));
-    const k=b.dataset.p;if(k==='all')m.flyToBounds(all,{padding:[60,60]});else m.flyTo([PTS[k][0],PTS[k][1]],k==='city'?14:15);
+    const k=b.dataset.p;if(k==='all')m.flyToBounds(all,{paddingTopLeft:[60,60],paddingBottomRight:[60,150]});else if(k==='near')m.flyToBounds(L.latLngBounds(NEAR.map(n=>[PTS[n][0],PTS[n][1]])),{paddingTopLeft:[80,90],paddingBottomRight:[240,170],maxZoom:16});else m.flyTo([PTS[k][0],PTS[k][1]],k==='city'?14:15);
   });
 })();
 
