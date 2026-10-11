@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Дом у дубравы — журнал City House</title>
+<meta name="description" content="Что даёт соседство с Хованской дубравой: вид из окон, свет, тишина и прогулки без машины. На что смотреть на просмотре участка.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#243629;--green-2:#2f4535;--sand:#c3ad8b;--sand-d:#806a4a;--paper:#f4f1ea;--paper-2:#ebe6dc;
+  --ink:#1c1e1b;--muted:#5d6158;--line:#d8d0c1;--white:#fff;
+  --serif:'Prata',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,sans-serif;
+  --r:4px;--wrap:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--sans);color:var(--ink);background:var(--white);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:-.01em}
+h2{font-size:clamp(36px,5vw,64px)}
+h3{font-size:clamp(24px,2.4vw,32px)}
+.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand-d);font-weight:600;margin-bottom:18px}
+.lead{font-size:clamp(17px,1.5vw,20px);color:var(--muted);max-width:620px}
+section{padding:120px 0}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:18px 26px;border-radius:var(--r);font-weight:600;font-size:16px;transition:background .25s,color .25s,transform .25s}
+.btn::after{content:"+";font-weight:300;font-size:24px;line-height:0}
+.btn-sand{background:var(--sand-d);color:var(--white)}
+.btn-sand:hover{background:#6c5a3e}
+.btn-green{background:var(--green);color:var(--white)}
+.btn-green:hover{background:var(--green-2)}
+.btn-ghost{border:1px solid rgba(255,255,255,.5);color:var(--white)}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+/* шапка */
+header{position:fixed;inset:0 0 auto;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;gap:28px;height:76px;max-width:1440px;margin:0 auto;padding:0 32px}
+.logo{display:flex;flex-direction:column;line-height:1;white-space:nowrap}
+.logo b{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:.06em;color:var(--green)}
+.logo span{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+nav{display:flex;gap:22px;margin-left:12px;font-size:15px;white-space:nowrap}
+nav a{color:var(--ink);opacity:.85}
+nav a:hover{opacity:1;color:var(--sand-d)}
+.hd-r{margin-left:auto;display:flex;align-items:center;gap:18px}
+.tel{font-weight:600;font-size:17px;white-space:nowrap}
+.msg{display:flex;gap:8px}
+.msg a{width:36px;height:36px;border-radius:50%;background:var(--green);display:grid;place-items:center}
+.msg a:hover{background:var(--sand-d)}
+.msg svg{width:18px;height:18px;fill:#fff}
+.hd .btn{padding:13px 20px;font-size:15px;white-space:nowrap}
+
+
+/* заявки */
+.forms{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form{position:relative;color:#fff;border-radius:var(--r);overflow:hidden;min-height:640px;display:flex}
+.form>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.form::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,20,16,.78),rgba(14,20,16,.55) 50%,rgba(14,20,16,.85));z-index:1}
+.form-in{position:relative;z-index:2;padding:48px;display:flex;flex-direction:column;width:100%}
+.form h3{font-size:clamp(28px,3vw,42px);margin-bottom:14px}
+.form p{opacity:.88;margin-bottom:28px;max-width:440px}
+.form form{margin-top:auto;display:grid;gap:12px}
+.form input[type=text],.form input[type=tel]{width:100%;padding:17px 18px;border-radius:var(--r);border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#fff;font:inherit;font-size:16px}
+.form input::placeholder{color:rgba(255,255,255,.7)}
+.form .agree{font-size:12px;opacity:.7;display:flex;gap:8px;align-items:flex-start}
+.form .btn{justify-content:center}
+.done{display:none;font-family:var(--serif);font-size:26px;margin-top:auto}
+.form.sent form{display:none}
+.form.sent .done{display:block}
+
+
+.fld{margin-bottom:26px}
+.fld label{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-bottom:10px}
+.fld label b{color:var(--ink);font-size:16px}
+.floors{display:flex;gap:6px}
+.floors button{padding:9px 14px;border:1px solid var(--line);border-radius:var(--r);font-size:14px;background:#fff}
+.floors button.on{background:var(--green);color:#fff;border-color:var(--green)}
+.fl{display:grid;gap:6px;font-size:14px}
+.fl span{opacity:.85}
+.fl .err{color:#ffd2b8;font-size:13px;min-height:0;display:none}
+.fl.bad input{border-color:#ffb38a}
+.fl.bad .err{display:block}
+footer{background:#151d17;color:rgba(255,255,255,.7);padding:64px 0 40px;font-size:14px}
+.ft{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+footer .logo b{color:#fff}
+footer .logo span{color:rgba(255,255,255,.5)}
+footer a:hover{color:#fff}
+.ft-note{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;opacity:.7}
+footer .logo b{color:#fff}
+/* журнал */
+.art{padding:76px 0 0}
+.a-head{max-width:900px;margin:0 auto;padding:72px 32px 40px;text-align:center}
+.a-head h1{font-size:clamp(38px,5.4vw,72px);margin-bottom:24px}
+.a-head .lead{margin:0 auto}
+.crumbs{font-size:14px;color:var(--muted);margin-bottom:28px}
+.crumbs a{color:var(--sand-d)}
+.cover{max-width:1440px;margin:0 auto;padding:0 32px}
+.cover img{width:100%;height:min(78vh,760px);object-fit:cover;border-radius:var(--r)}
+.txt{max-width:760px;margin:0 auto;padding:0 32px}
+.txt h2{font-size:clamp(30px,3.6vw,46px);margin:96px 0 28px}
+.txt p{margin-bottom:20px}
+.txt p b{font-weight:600}
+.txt ul{margin:8px 0 24px 0;list-style:none}
+.txt li{padding:14px 0 14px 34px;border-top:1px solid var(--line);position:relative}
+.txt li:last-child{border-bottom:1px solid var(--line)}
+.txt li::before{content:"";position:absolute;left:4px;top:19px;width:14px;height:14px;border:1px solid var(--sand-d);border-radius:2px}
+.fig{max-width:1240px;margin:56px auto;padding:0 32px}
+.fig img{width:100%;border-radius:var(--r)}
+.fig.narrow{max-width:900px}
+.card{max-width:1240px;margin:56px auto;padding:0 32px}
+.card-in{border:1px solid var(--line);border-radius:var(--r);padding:56px;display:grid;grid-template-columns:1fr 1.5fr;gap:56px;align-items:center;background:#fff}
+.card .eb{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.card h3{font-size:clamp(30px,3.2vw,44px);margin-bottom:18px}
+.card p{color:var(--muted);font-size:15px;max-width:360px}
+.arch img{width:100%;max-width:620px;margin:0 auto}
+.seasons{display:grid;grid-template-columns:repeat(4,1fr);max-width:620px;margin:16px auto 0;text-align:center;font-family:var(--serif);font-size:17px}
+.card.pano .card-in{grid-template-columns:1fr;gap:28px}
+.pano-top{display:flex;justify-content:space-between;align-items:flex-end;gap:32px}
+.pano-top>p{text-align:right;max-width:260px}
+.pano img{width:100%}
+.times{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;gap:24px}
+.times svg{width:48px;height:28px;margin:0 auto 8px}
+.times b{display:block;font-family:var(--serif);font-weight:400;font-size:21px;margin-bottom:4px}
+.times span{font-size:14px;color:var(--muted);display:block;max-width:220px;margin:0 auto}
+.ovals{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
+.ovals img{width:100%;max-width:200px;margin:0 auto 18px}
+.ovals b{display:block;font-family:var(--serif);font-weight:400;font-size:21px;margin-bottom:4px}
+.ovals span{font-size:14px;color:var(--muted);display:block;max-width:200px;margin:0 auto}
+.zf{max-width:1176px;margin:72px auto;min-height:440px}
+.zf .form-in{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;padding:56px}
+.zf form{margin-top:0}
+.zf .done{margin-top:0}
+.rel{max-width:1240px;margin:120px auto 0;padding:0 32px 120px}
+.rel h2{font-size:clamp(30px,3.6vw,46px);margin-bottom:36px}
+.rel-g{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rel-g a{display:block}
+.rel-g img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r);margin-bottom:16px;transition:opacity .25s}
+.rel-g a:hover img{opacity:.86}
+.rel-g b{font-family:var(--serif);font-weight:400;font-size:24px;display:block;margin-bottom:6px}
+.rel-g span{color:var(--muted);font-size:15px}
+.mbar{display:none}
+@media (max-width:1360px){nav{display:none}}
+@media (max-width:900px){
+  .card-in{grid-template-columns:1fr;padding:32px 20px;gap:28px}
+  .zf .form-in{grid-template-columns:1fr;padding:32px 20px;gap:28px}
+  .rel-g{grid-template-columns:1fr}
+  .pano-top{flex-direction:column;align-items:flex-start}.pano-top>p{text-align:left}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .hd{padding:0 16px;gap:12px;height:64px}.art{padding-top:64px}
+  .logo b{font-size:20px}
+  .tel,.hd .btn,.msg{display:none}
+  .a-head{padding:44px 16px 28px}
+  .cover,.txt,.fig,.card,.rel{padding-left:16px;padding-right:16px}
+  .cover img{height:auto;aspect-ratio:4/3}
+  .txt h2{margin-top:64px}
+  .zf{margin:48px 16px}
+  .times,.ovals{grid-template-columns:repeat(3,1fr);gap:10px}.ovals img{margin-bottom:10px}.ovals b,.times b{font-size:17px}.ovals span,.times span{font-size:12px}
+  .ft{grid-template-columns:1fr}
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--green);padding:10px 12px;gap:8px}
+  .mbar a{flex:1;text-align:center;color:#fff;padding:12px 6px;font-weight:600;font-size:15px;border-radius:var(--r);background:rgba(255,255,255,.1)}
+  .mbar a:first-child{background:var(--sand)}
+  footer{padding-bottom:110px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="hd">
+    <a href="index.html#top" class="logo"><b>CITY HOUSE</b><span>Прокшино · Дубрава</span></a>
+    <nav>
+      <a href="index.html#location">Локация</a>
+      <a href="index.html#choose">Выбрать дом</a>
+      <a href="index.html#arch">Архитектура</a>
+      <a href="index.html#pay">Оплата и ипотека</a>
+      <a href="index.html#projects">Мы построили</a>
+      <a href="index.html#faq">Вопросы</a>
+    </nav>
+    <div class="hd-r">
+      <a class="tel" href="tel:+79175995948">+7 917 599-59-48</a>
+      <div class="msg">
+        <a href="https://wa.me/79643208255" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg></a>
+        <a href="https://t.me/romaluna" aria-label="Telegram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.4 3.6 2.9 10.7c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.4.8.8.8s.6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.8c.3-1.3-.5-1.9-1.4-1.6zM9 13.4l9.3-5.9c.4-.3.8-.1.5.2l-7.9 7.1-.3 3.3z"/></svg></a>
+        <a href="https://vk.ru/roma.luno" aria-label="ВКонтакте" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12.8 17.5C6.7 17.5 3.2 13.3 3 6.4h3c.1 5 2.4 7.2 4.1 7.6V6.4H13v4.3c1.7-.2 3.5-2.1 4.1-4.3h2.8c-.5 2.6-2.4 4.6-3.8 5.4 1.4.7 3.6 2.4 4.4 5.6h-3.1c-.7-2.1-2.3-3.7-4.4-3.9v3.9z"/></svg></a>
+      </div>
+      <a href="#f3" class="btn btn-green">Записаться на экскурсию</a>
+    </div>
+  </div>
+</header>
+
+<main class="art">
+<div class="a-head">
+  <p class="crumbs"><a href="index.html">Дома у дубравы</a> · Журнал</p>
+  <h1>Дом у&nbsp;дубравы: что даёт соседство с&nbsp;вековым лесом</h1>
+  <p class="lead">Вид из окон, свет, тишина и&nbsp;прогулки без машины. Рассказываем, что меняется в&nbsp;жизни, когда за участком начинается Хованская дубрава, и&nbsp;на что смотреть на&nbsp;просмотре.</p>
+</div>
+<div class="cover"><img src="img/zh/oblozhka.jpg" alt="Дом за стволами дубов осенью, вечерний свет в окнах"></div>
+
+<article>
+<div class="txt">
+<h2>Вид из&nbsp;окна: дубрава в&nbsp;четыре сезона</h2>
+<p>Хованская дубрава&nbsp;— лесной массив в&nbsp;69 га между деревней Николо-Хованское, ЖК «Прокшино» и&nbsp;Филатовским шоссе. Около 41 га из них&nbsp;— чистый дуб, это самая крупная чистая дубрава Новой Москвы. Дубам от&nbsp;80 до&nbsp;150 лет, деревья вековые.</p>
+<p>У забора наших участков стоит лиственный лес: берёза и&nbsp;дуб, вековые дубы&nbsp;— прямо у границы. Такой лес за окном каждый сезон другой. Весной крона только зеленеет, летом закрывает небо, осенью даёт цвет, зимой открывает стволы и&nbsp;глубину. Один и&nbsp;тот же вид в&nbsp;январе и&nbsp;в&nbsp;июле&nbsp;— две разные картины.</p>
+<p>Вид хорошо работает там, где вы проводите больше времени. Если день проходит на&nbsp;кухне и&nbsp;в&nbsp;гостиной, лес логично отдать им. Если дом нужен по&nbsp;выходным, важнее терраса, на&nbsp;которой завтракают и&nbsp;сидят вечером. Открывать к&nbsp;лесу весь фасад необязательно: иногда хватает одной большой группы окон. В доме 250 м² панорамные окна и&nbsp;терраса смотрят на&nbsp;деревья. В доме 200 м² к&nbsp;лесу развёрнут второй свет в&nbsp;кухне-гостиной.</p>
+
+</div>
+<div class="card rv"><div class="card-in">
+  <div><p class="eb">Вид из дома</p><h3>Год за&nbsp;окном</h3><p>Одно окно&nbsp;— и&nbsp;четыре разных пейзажа за год. Лес у границы участка не&nbsp;бывает одинаковым дважды.</p></div>
+  <div class="arch"><img src="img/zh/arka.jpg" alt="Один и тот же лес весной, летом, осенью и зимой" loading="lazy"><div class="seasons"><span>Весна</span><span>Лето</span><span>Осень</span><span>Зима</span></div></div>
+</div></div>
+
+<div class="txt">
+<h2>Свет: к&nbsp;солнцу или к&nbsp;лесу</h2>
+<p>Лес меняет свет и&nbsp;в&nbsp;доме, и&nbsp;в&nbsp;саду. Летом густая листва задерживает солнце, весной и&nbsp;осенью, пока ветви редкие, света на&nbsp;участке больше. Утром и&nbsp;вечером тень ложится по-разному.</p>
+<p>Единого правильного расположения нет. Кому-то важен завтрак на&nbsp;солнце, кому-то нужна прохладная терраса к&nbsp;вечеру. Поэтому расположение дома на&nbsp;участке, разворот фасадов и&nbsp;окон мы определяем под вас. Хотите больше солнца в&nbsp;гостиной&nbsp;— разворачиваем её к&nbsp;солнцу. Важнее лес за стеклом&nbsp;— к&nbsp;лесу. Нужно и&nbsp;то и&nbsp;другое&nbsp;— решаем по&nbsp;комнатам: какая к&nbsp;свету, какая к&nbsp;деревьям.</p>
+<p>Участок стоит увидеть в&nbsp;разное время суток. Утром, днём и&nbsp;ближе к&nbsp;вечеру он выглядит по-своему, и&nbsp;это помогает выбрать место для дома. Заранее прикиньте, когда вы чаще бываете дома: на&nbsp;завтраке, после работы или в&nbsp;выходной, и&nbsp;в&nbsp;какие часы вам нужно солнце.</p>
+
+</div>
+<div class="card pano rv"><div class="card-in">
+  <div class="pano-top"><div><p class="eb">Солнце и тень</p><h3 style="margin:0">Когда на&nbsp;участке солнце</h3></div><p>Место для стола и&nbsp;кресел выбирают по&nbsp;ходу солнца</p></div>
+  <img src="img/zh/panorama.jpg" alt="Опушка леса, утреннее солнце пробивается сквозь стволы" loading="lazy">
+  <div class="times">
+    <div><svg viewBox="0 0 48 28" aria-hidden="true"><path d="M4 26h40" stroke="#c3ad8b" stroke-width="1.5"/><path d="M10 26a14 14 0 0 1 28 0" fill="none" stroke="#d8d0c1" stroke-width="1.5"/><circle cx="14" cy="22" r="5" fill="#c9733f"/></svg><b>Утро</b><span>Завтрак на&nbsp;солнце</span></div>
+    <div><svg viewBox="0 0 48 28" aria-hidden="true"><path d="M4 26h40" stroke="#c3ad8b" stroke-width="1.5"/><path d="M10 26a14 14 0 0 1 28 0" fill="none" stroke="#d8d0c1" stroke-width="1.5"/><circle cx="24" cy="12" r="5" fill="#c9733f"/></svg><b>День</b><span>Летом листва держит тень</span></div>
+    <div><svg viewBox="0 0 48 28" aria-hidden="true"><path d="M4 26h40" stroke="#c3ad8b" stroke-width="1.5"/><path d="M10 26a14 14 0 0 1 28 0" fill="none" stroke="#d8d0c1" stroke-width="1.5"/><circle cx="34" cy="22" r="5" fill="#c9733f"/></svg><b>Вечер</b><span>Прохладная терраса к&nbsp;вечеру</span></div>
+  </div>
+</div></div>
+
+<div class="txt">
+<h2>Уединение: сзади и&nbsp;сбоку только лес</h2>
+<p>Три участка стоят в&nbsp;ряд вдоль проезда, задом к&nbsp;дубраве. Участок 3 угловой: сзади и&nbsp;справа от&nbsp;него лес, соседей с&nbsp;этой стороны нет. Спереди, за проездом,&nbsp;— посёлок из двухэтажных домов. Проезд тупиковый и&nbsp;упирается в&nbsp;лес, сквозного движения на&nbsp;нём нет.</p>
+<p>Для террасы и&nbsp;гостиной это значит простую вещь: из окна видны деревья, а не&nbsp;окно соседа. Сидеть вечером на&nbsp;террасе можно без оглядки на&nbsp;соседний забор, а гостиную не&nbsp;нужно закрывать шторами от&nbsp;улицы со стороны леса.</p>
+<p>Тишина не&nbsp;отрезает от&nbsp;города. До метро Прокшино 8 минут на&nbsp;машине или 30 минут пешком. До МКАД 12 минут по&nbsp;Киевскому шоссе, до&nbsp;Москва-Сити 35 минут. Адрес: Москва, НАО, д. Николо-Хованское.</p>
+
+</div>
+<div class="fig rv"><img src="img/zh/terrasa.jpg" alt="Терраса дома, за ней дубы и берёзы" loading="lazy"></div>
+<div class="form zf rv" id="f1">
+  <img src="img/uchastok-foto.jpg" alt="" loading="lazy">
+  <div class="form-in"><div><h3>Посмотрите участок у дубравы</h3><p>Покажем угловой участок 3 и&nbsp;расскажем, как развернуть дом под вас.</p></div>
+    <form data-kind="ekskursiya-zhurnal-1">
+      <label class="fl"><span>Имя</span><input type="text" name="name" autocomplete="given-name" required></label>
+      <label class="fl"><span>Телефон</span><input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" required><em class="err">Проверьте номер: нужно 11 цифр, начиная с&nbsp;+7</em></label>
+      <label class="agree"><input type="checkbox" name="agree" required> Согласен на&nbsp;обработку персональных данных</label>
+      <button class="btn btn-sand">Записаться на&nbsp;экскурсию</button>
+    </form>
+    <div class="done">Спасибо! Позвоним и&nbsp;договоримся о&nbsp;времени.</div>
+  </div>
+</div>
+
+<div class="txt">
+<h2>Прогулки: парк в&nbsp;двух минутах</h2>
+<p>До парка «Хованская дубрава» от&nbsp;участков 2 минуты. Это прогулочный парк в&nbsp;21 га в&nbsp;восточной части массива: он открыт в&nbsp;2020 году, по&nbsp;нему идёт ручей Бараньи Рога, а с&nbsp;2021 года зимой работает лыжня.</p>
+<p>Рядом набережная Прокшино&nbsp;— благоустроенные зоны для прогулок у воды. Получаются три разных маршрута: лесной парк, ручей и&nbsp;набережная. Утром можно сделать круг до&nbsp;завтрака, вечером выйти после ужина, зимой встать на&nbsp;лыжи, не&nbsp;садясь в&nbsp;машину.</p>
+<p>Для семьи с&nbsp;детьми это место, где лес изучают вблизи: листья, жёлуди, следы на&nbsp;снегу. Для тех, кто работает из дома, это перерыв на&nbsp;свежем воздухе без дороги. Выход на&nbsp;прогулку определяет, как часто вы им пользуетесь: когда лес в&nbsp;двух минутах, он становится частью обычного дня, а не&nbsp;поводом для поездки.</p>
+
+</div>
+<div class="card rv"><div class="card-in">
+  <div><p class="eb">Лес рядом с&nbsp;домом</p><h3>На&nbsp;прогулку в&nbsp;любой момент</h3><p>До парка «Хованская дубрава» 2 минуты пешком. Выйти можно между делами, не&nbsp;садясь в&nbsp;машину.</p></div>
+  <div class="ovals">
+    <div><img src="img/zh/oval1.jpg" alt="" loading="lazy"><b>Утром</b><span>Круг до&nbsp;завтрака</span></div>
+    <div><img src="img/zh/oval2.jpg" alt="" loading="lazy"><b>После ужина</b><span>Выйти, никуда не&nbsp;собираясь</span></div>
+    <div><img src="img/zh/oval3.jpg" alt="" loading="lazy"><b>В&nbsp;выходной</b><span>Час на&nbsp;тропах парка</span></div>
+  </div>
+</div></div>
+
+<div class="txt">
+<h2>Двор у&nbsp;леса: костровая площадка, терраса, сад в&nbsp;тени</h2>
+<p>В доме 250 м² двор устроен под жизнь у леса. Костровый двор&nbsp;— открытая площадка, на&nbsp;которой вечером собирается вся семья. К лесу выходит терраса. Террасу в&nbsp;30 м² из лиственницы можно сделать сразу.</p>
+<p>Сад рядом с&nbsp;дубами живёт по&nbsp;своим правилам. Вот четыре, которые стоит учесть при планировании.</p>
+<p><b>Тень.</b> Под кроной солнца мало, и&nbsp;газон там нужен теневыносливый. Цветники тоже подбирают под тень.</p>
+<p><b>Опад.</b> Осенью дубы сбрасывают много листьев. Брусчатка убирается проще, чем гравий или грунтовая дорожка.</p>
+<p><b>Вода и&nbsp;корни.</b> У крупных деревьев сад не&nbsp;перекапывают и&nbsp;не поднимают уровень земли у стволов. Дренаж помогает воде уходить с&nbsp;участка и&nbsp;не стоять у корней.</p>
+<p><b>Рубка.</b> В Москве деревья рубят только по&nbsp;разрешению и&nbsp;с компенсационным озеленением. Поэтому сад проектируют вокруг деревьев, которые уже растут.</p>
+<p>Благоустройство можно включить в&nbsp;стоимость дома: террасу, теневыносливый рулонный газон, брусчатку и&nbsp;дренаж.</p>
+
+</div>
+<div class="fig narrow rv"><img src="img/zh/skhema.jpg" alt="Схема сада: лес, дубы, тенистый сад, газон на солнце, костровая зона, терраса, дом" loading="lazy"></div>
+<div class="form zf rv" id="f2">
+  <img src="img/les-terrasa.jpg" alt="" loading="lazy">
+  <div class="form-in"><div><h3>Какой двор нужен вам?</h3><p>Расскажите, как проводите вечера,&nbsp;— подскажем, где поставить террасу и&nbsp;костровую площадку.</p></div>
+    <form data-kind="ekskursiya-zhurnal-2">
+      <label class="fl"><span>Имя</span><input type="text" name="name" autocomplete="given-name" required></label>
+      <label class="fl"><span>Телефон</span><input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" required><em class="err">Проверьте номер: нужно 11 цифр, начиная с&nbsp;+7</em></label>
+      <label class="agree"><input type="checkbox" name="agree" required> Согласен на&nbsp;обработку персональных данных</label>
+      <button class="btn btn-sand">Записаться на&nbsp;экскурсию</button>
+    </form>
+    <div class="done">Спасибо! Позвоним и&nbsp;договоримся о&nbsp;времени.</div>
+  </div>
+</div>
+
+<div class="txt">
+<h2>Что посмотреть на&nbsp;просмотре</h2>
+<p>Участок у леса лучше оценивать ногами. Пройдите путь от&nbsp;проезда до&nbsp;границы и&nbsp;дальше в&nbsp;лес, потом вернитесь и&nbsp;посмотрите на&nbsp;дом глазами хозяина. Вот что проверить:</p>
+
+<ul>
+<li><b>Вид из будущих комнат.</b> Встаньте там, где будет гостиная, и&nbsp;посмотрите, что открывается в&nbsp;окне.</li><li><b>Вековые дубы у границы.</b> Оцените, как близко они стоят, как далеко уходит их тень и&nbsp;какие окна дома смотрят на&nbsp;них.</li><li><b>Свет.</b> Если можете, приезжайте дважды: утром и&nbsp;вечером.</li><li><b>Тишина.</b> Остановитесь на&nbsp;тупиковом проезде и&nbsp;послушайте, что слышно. Сравните с&nbsp;местом, где вы живёте сейчас.</li><li><b>Парк.</b> Дойдите до&nbsp;входа в&nbsp;парк «Хованская дубрава», он в&nbsp;2 минутах.</li><li><b>Дорога.</b> Прогоните путь до&nbsp;метро Прокшино: 8 минут на&nbsp;машине, 30 пешком.</li><li><b>Разворот дома.</b> Спросите, как расположить дом и&nbsp;окна под вашу семью. Это решается индивидуально.</li>
+</ul>
+<p>На просмотре мы покажем участок, дубраву и&nbsp;готовые дома City House. Всё это в&nbsp;20 минутах друг от&nbsp;друга.</p>
+
+</div>
+<div class="fig narrow rv" style="max-width:640px"><img src="img/zh/chek.jpg" alt="Чек-лист просмотра: семь пунктов на фоне дубравы" loading="lazy"></div>
+
+<div class="txt">
+<h2>Наши дома у&nbsp;дубравы</h2>
+<p>У Хованской дубравы мы строим дома 200, 250 и&nbsp;500 м². Цены&nbsp;— 39,9, 42,9 и&nbsp;82,9 млн ₽. Участок 8 соток, а для дома 500 м²&nbsp;— 16 соток.</p>
+<p>В цену входит подключение: магистральный газ, электричество 15 кВт, септик и&nbsp;скважина. Дом сдаётся в&nbsp;тёплом контуре, с&nbsp;фасадом и&nbsp;коммуникациями, и&nbsp;регистрируется в&nbsp;Росреестре. Строим 6 месяцев.</p>
+<p>На сайте есть <a href="index.html#choose" style="color:var(--sand-d);text-decoration:underline">конфигуратор</a>: выберите участок, поставьте на&nbsp;него дом и&nbsp;посмотрите, как он встаёт по&nbsp;отношению к&nbsp;лесу и&nbsp;проезду. А на&nbsp;экскурсии мы пройдём по&nbsp;участку вместе.</p>
+
+</div>
+<div class="fig rv"><img src="img/tri-doma.jpg" alt="Три дома City House: 200, 250 и 500 м²" loading="lazy"></div>
+<div class="form zf rv" id="f3">
+  <img src="img/zakat.jpg" alt="" loading="lazy">
+  <div class="form-in"><div><h3>Приезжайте к&nbsp;дубраве</h3><p>Покажем участок, дубраву и&nbsp;готовые дома City House&nbsp;— всё в&nbsp;20 минутах друг от&nbsp;друга.</p></div>
+    <form data-kind="ekskursiya-zhurnal-3">
+      <label class="fl"><span>Имя</span><input type="text" name="name" autocomplete="given-name" required></label>
+      <label class="fl"><span>Телефон</span><input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" required><em class="err">Проверьте номер: нужно 11 цифр, начиная с&nbsp;+7</em></label>
+      <label class="agree"><input type="checkbox" name="agree" required> Согласен на&nbsp;обработку персональных данных</label>
+      <button class="btn btn-sand">Записаться на&nbsp;экскурсию</button>
+    </form>
+    <div class="done">Спасибо! Позвоним и&nbsp;договоримся о&nbsp;времени.</div>
+  </div>
+</div>
+</article>
+
+<section class="rel" style="padding-top:0">
+  <h2>Читайте также</h2>
+  <div class="rel-g">
+    <a href="index.html#choose"><img src="img/dom250.jpg" alt="" loading="lazy"><b>Планировки</b><span>Дома 200, 250 и&nbsp;500 м², выберите свой</span></a>
+    <a href="index.html#pay"><img src="img/kuhnya.jpg" alt="" loading="lazy"><b>Оплата и&nbsp;ипотека</b><span>Как устроена сделка и&nbsp;платежи</span></a>
+    <a href="index.html#projects"><img src="img/fasad-vecher.jpg" alt="" loading="lazy"><b>Мы построили</b><span>Наши готовые дома в&nbsp;Новой Москве</span></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div><a href="index.html" class="logo"><b>CITY HOUSE</b><span>Прокшино · Дубрава</span></a><p style="margin-top:20px">Москва, НАО, д.&nbsp;Николо-Хованское</p></div>
+      <div><p>Телефон</p><a href="tel:+79175995948" style="color:#fff;font-size:18px">+7 917 599-59-48</a><p style="margin-top:12px"><a href="https://wa.me/79643208255">WhatsApp</a> · <a href="https://t.me/romaluna">Telegram</a> · <a href="https://vk.ru/roma.luno">ВКонтакте</a> · MAX +7 964 320-82-55</p></div>
+      <div><p>ИП Каменецкий Максим Александрович</p><p>ИНН 504106874779</p><p>ОГРНИП 319508100173016</p></div>
+    </div>
+    <div class="ft-note">Дома продаются на&nbsp;стадии проекта и&nbsp;стройки&nbsp;— на&nbsp;изображениях визуализации. Интерьеры&nbsp;— варианты отделки, в&nbsp;цену не&nbsp;входят. Информация на&nbsp;сайте не&nbsp;является публичной офертой.</div>
+  </div>
+</footer>
+
+<div class="mbar"><a href="#f3">Экскурсия</a><a href="tel:+79175995948">Позвонить</a><a href="https://wa.me/79643208255">WhatsApp</a></div>
+
+<script>
+// формы (прототип: заявка не отправляется): проверка телефона с подсказкой у поля
+document.querySelectorAll('.form form').forEach(f=>{
+  const ph=f.querySelector('input[name=phone]'),box=ph.closest('.fl');
+  ph.addEventListener('input',()=>{let d=ph.value.replace(/\D/g,'');if(d[0]==='8')d='7'+d.slice(1);if(d&&d[0]!=='7')d='7'+d;d=d.slice(0,11);
+    ph.value=d?('+'+d[0]+(d.length>1?' '+d.slice(1,4):'')+(d.length>4?' '+d.slice(4,7):'')+(d.length>7?'-'+d.slice(7,9):'')+(d.length>9?'-'+d.slice(9,11):'')):'';box.classList.remove('bad')});
+  f.onsubmit=e=>{e.preventDefault();if(ph.value.replace(/\D/g,'').length!==11){box.classList.add('bad');ph.focus();return}f.closest('.form').classList.add('sent')};
+});
+
+</script>
+</body>
+</html>
