@@ -15,7 +15,7 @@
   --green:#243629;--green-2:#2f4535;--sand:#c3ad8b;--sand-d:#806a4a;--paper:#f4f1ea;--paper-2:#ebe6dc;
   --ink:#1c1e1b;--muted:#5d6158;--line:#d8d0c1;--white:#fff;
   --serif:'Prata',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,sans-serif;
-  --r:4px;--wrap:1240px;
+  --r:4px;--wrap:1680px;--gut:clamp(32px,4vw,72px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
@@ -23,7 +23,7 @@ body{font-family:var(--sans);color:var(--ink);background:var(--white);font-size:
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
 h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:-.01em}
 h2{font-size:clamp(36px,5vw,64px)}
 h3{font-size:clamp(24px,2.4vw,32px)}
@@ -41,7 +41,7 @@ section{padding:120px 0}
 
 /* шапка */
 header{position:fixed;inset:0 0 auto;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.hd{display:flex;align-items:center;gap:28px;height:76px;max-width:1440px;margin:0 auto;padding:0 32px}
+.hd{display:flex;align-items:center;gap:28px;height:76px;max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
 .logo{display:flex;flex-direction:column;line-height:1;white-space:nowrap}
 .logo b{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:.06em;color:var(--green)}
 .logo span{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-top:5px}
@@ -59,7 +59,7 @@ nav a:hover{opacity:1;color:var(--sand-d)}
 /* hero */
 .hero{padding:76px 0 0;background:var(--white)}
 .hh-in{display:grid;grid-template-columns:1.1fr 1fr;min-height:clamp(640px,calc(100vh - 76px),880px)}
-.hh-txt{padding:80px 56px 64px max(32px,calc((100vw - 1240px)/2 + 32px));display:flex;flex-direction:column;justify-content:center;background:var(--paper)}
+.hh-txt{padding:80px 56px 64px max(var(--gut),calc((100vw - var(--wrap))/2 + var(--gut)));display:flex;flex-direction:column;justify-content:center;background:var(--paper)}
 .hh-txt h1{font-size:clamp(38px,4.1vw,60px);text-wrap:balance;color:var(--green);margin-bottom:28px}
 .hh-txt .lead{margin-bottom:36px;color:var(--ink)}
 .hh-price{display:flex;align-items:baseline;gap:14px;margin-bottom:36px;padding-top:28px;border-top:1px solid var(--line)}
@@ -172,11 +172,11 @@ nav a:hover{opacity:1;color:var(--sand-d)}
 .gal-nav{display:flex;gap:8px}
 .gal-nav button{width:54px;height:54px;border:1px solid var(--line);border-radius:var(--r);font-size:22px}
 .gal-nav button:hover{background:var(--paper)}
-.gal{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 max(32px,calc((100vw - 1240px)/2 + 32px)) 8px;scrollbar-width:none}
+.gal{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 max(var(--gut),calc((100vw - var(--wrap))/2 + var(--gut))) 8px;scrollbar-width:none}
 .gal::-webkit-scrollbar{display:none}
 .slide{flex:0 0 min(440px,80vw);scroll-snap-align:start;position:relative;border-radius:var(--r);overflow:hidden;color:#fff}
 .slide.wide{flex-basis:min(820px,88vw)}
-.ax{position:relative;margin:36px max(16px,calc((100vw - 1440px)/2));height:min(86vh,860px);min-height:520px;border-radius:var(--r);overflow:hidden;background:#1b2a20;color:#fff}
+.ax{position:relative;margin:36px max(16px,calc((100vw - var(--wrap))/2 + var(--gut)/2));height:min(86vh,860px);min-height:520px;border-radius:var(--r);overflow:hidden;background:#1b2a20;color:#fff}
 .ax-s{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease}
 .ax-s.on{opacity:1;z-index:1}
 .ax-s img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 7.5s ease-out}
@@ -218,6 +218,7 @@ nav a:hover{opacity:1;color:var(--sand-d)}
 
 /* надёжность */
 .rel-head{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;margin-bottom:56px}
+.oak-j{margin-top:20px;font-size:16px}.oak-j a{color:var(--sand-d);text-decoration:underline;text-underline-offset:4px}.oak-j a:hover{color:var(--ink)}
 .acc{border-top:1px solid var(--line)}
 .acc-i{border-bottom:1px solid var(--line);position:relative;overflow:hidden}
 .acc-h{display:grid;grid-template-columns:80px 1fr 1.2fr 40px;gap:20px;align-items:center;width:100%;text-align:left;padding:28px 24px;position:relative;z-index:2}
@@ -802,6 +803,7 @@ a{text-underline-offset:3px}
       <p class="lead" style="margin-top:24px">Сзади участка нет соседей&nbsp;— только лес: дубы и&nbsp;берёзы прямо у&nbsp;забора. Тишина, тень деревьев и&nbsp;свой выход к&nbsp;лесу.</p>
       <div class="oak-small"><span>69&nbsp;га&nbsp;— весь лесной массив</span><span>80–150&nbsp;лет&nbsp;— возраст дубов</span><span>21&nbsp;га&nbsp;— прогулочный парк с&nbsp;ручьём, зимой лыжня</span></div>
       <p class="aud"><span>Семьям с&nbsp;детьми</span><span>Любителям прогулок</span><span>Тем, кто устал от&nbsp;соседей за&nbsp;стеной</span></p>
+      <p class="oak-j"><a href="dom-u-dubravy.html">Что даёт соседство с&nbsp;дубравой&nbsp;— статья в&nbsp;журнале&nbsp;→</a></p>
       <a href="#forms" class="btn btn-sand" style="margin-top:28px">Записаться на&nbsp;экскурсию</a>
     </div>
     <div class="oak-photos rv">
@@ -865,8 +867,7 @@ a{text-underline-offset:3px}
       <div class="acc-i open"><img src="img/dom200-1b.jpg" alt="" loading="lazy"><button class="acc-h"><span class="no">(01)</span><b>Цена и&nbsp;срок</b><i>зафиксированы до&nbsp;начала стройки</i><span class="pm">+</span></button><div class="acc-b"><p>Полное понимание бюджета заранее. Срок строительства&nbsp;— 6&nbsp;месяцев, неустойка за&nbsp;просрочку прописывается в&nbsp;договоре.</p></div></div>
       <div class="acc-i"><img src="img/uchastok-foto.jpg" alt="" loading="lazy" style="object-position:50% 60%"><button class="acc-h"><span class="no">(02)</span><b>Безопасная сделка</b><i>выбираете удобный вариант оплаты</i><span class="pm">+</span></button><div class="acc-b"><p>Можно через эскроу-счёт: деньги хранятся в&nbsp;банке и&nbsp;переходят к&nbsp;нам только после регистрации дома&nbsp;— этот вариант немного дороже. Можно без эскроу: участок сразу оформляется на&nbsp;вас в&nbsp;Росреестре, а&nbsp;дом оплачивается поэтапно, по&nbsp;мере готовности. В&nbsp;обоих случаях&nbsp;— договор с&nbsp;собственником и&nbsp;сделка через аккредитованные банки.</p></div></div>
       <div class="acc-i"><img src="img/fasad.jpg" alt="" loading="lazy"><button class="acc-h"><span class="no">(03)</span><b>Контроль каждого этапа</b><i>скрытые работы проверяете до&nbsp;закрытия</i><span class="pm">+</span></button><div class="acc-b"><p>Каждый скрытый этап можно проверить до&nbsp;того, как его закроют. Можно привлечь независимый технический надзор. Видеонаблюдение за&nbsp;стройкой 24/7, фото- и&nbsp;видеоотчёт по&nbsp;этапам.</p></div></div>
-      <div class="acc-i"><img src="img/zakat.jpg" alt="" loading="lazy"><button class="acc-h"><span class="no">(04)</span><b>Гарантия</b><i>по&nbsp;договору, сроки прописаны</i><span class="pm">+</span></button><div class="acc-b"><p>Несущая коробка дома&nbsp;— газобетон и&nbsp;монолитный железобетон. Гарантийные обязательства по&nbsp;договору&nbsp;— на&nbsp;конструктив и&nbsp;на&nbsp;инженерные системы; сроки и&nbsp;порядок обращения прописаны в&nbsp;договоре.</p></div></div>
-      <div class="acc-i"><img src="img/terrasa-den.jpg" alt="" loading="lazy"><button class="acc-h"><span class="no">(05)</span><b>Отвечает собственник</b><i>договор лично с&nbsp;владельцем компании</i><span class="pm">+</span></button><div class="acc-b"><p>Договор вы&nbsp;подписываете с&nbsp;собственником City House Максимом Каменецким&nbsp;— за&nbsp;дом он&nbsp;отвечает лично. Один подрядчик на&nbsp;всю стройку и&nbsp;один ответственный за&nbsp;ваш объект.</p></div></div>
+      <div class="acc-i"><img src="img/terrasa-den.jpg" alt="" loading="lazy"><button class="acc-h"><span class="no">(04)</span><b>Отвечает собственник</b><i>договор лично с&nbsp;владельцем компании</i><span class="pm">+</span></button><div class="acc-b"><p>Договор вы&nbsp;подписываете с&nbsp;собственником City House Максимом Каменецким&nbsp;— за&nbsp;дом он&nbsp;отвечает лично. Один подрядчик на&nbsp;всю стройку и&nbsp;один ответственный за&nbsp;ваш объект.</p></div></div>
     </div>
   </div>
 </section>
@@ -971,7 +972,6 @@ a{text-underline-offset:3px}
       <details><summary>Нужен ли эскроу-счёт?</summary><p>Готовый дом, зарегистрированный в&nbsp;Росреестре, продаётся по&nbsp;договору купли-продажи&nbsp;— эскроу такой сделке не&nbsp;нужен. Если вы&nbsp;хотите строить в&nbsp;ипотеку через эскроу, работаем с&nbsp;аккредитованными подрядчиками&nbsp;— это дороже примерно на&nbsp;5%.</p></details>
       <details><summary>Газ уже подведён?</summary><p>Газ магистральный, подключение входит в&nbsp;стоимость дома&nbsp;— вместе с&nbsp;электричеством 15&nbsp;кВт, септиком и&nbsp;скважиной. Отдельно за&nbsp;подключение платить не&nbsp;нужно.</p></details>
       <details><summary>Можно купить только участок?</summary><p>Нет. Участок продаётся только вместе с&nbsp;домом.</p></details>
-      <details><summary>Какая гарантия на&nbsp;дом?</summary><p>Гарантия по&nbsp;договору&nbsp;— на&nbsp;конструктив и&nbsp;на&nbsp;инженерные системы. Сроки и&nbsp;порядок обращения прописаны в&nbsp;договоре, покажем его образец до&nbsp;встречи.</p></details>
       <details><summary>Можно ли взять ипотеку?</summary><p>Да, в&nbsp;том числе семейную. Подберём программу и&nbsp;сопроводим одобрение.</p></details>
       <details><summary>Будет московская прописка?</summary><p>Да. Это Новая Москва: прописка московская, школы, детские сады и&nbsp;кафе&nbsp;— рядом.</p></details>
       <details><summary>Сколько строится дом?</summary><p>6&nbsp;месяцев. Срок и&nbsp;цена фиксируются в&nbsp;договоре до&nbsp;начала строительства.</p></details>
@@ -1017,7 +1017,7 @@ a{text-underline-offset:3px}
 <footer>
   <div class="wrap">
     <div class="ft">
-      <div><a href="#top" class="logo"><b>CITY HOUSE</b><span>Прокшино · Дубрава</span></a><p style="margin-top:20px">Москва, НАО, д.&nbsp;Николо-Хованское</p></div>
+      <div><a href="#top" class="logo"><b>CITY HOUSE</b><span>Прокшино · Дубрава</span></a><p style="margin-top:20px">Москва, НАО, д.&nbsp;Николо-Хованское</p><p style="margin-top:12px"><a href="dom-u-dubravy.html">Журнал: дом у&nbsp;дубравы</a></p></div>
       <div><p>Телефон</p><a href="tel:+79175995948" style="color:#fff;font-size:18px">+7 917 599-59-48</a><p style="margin-top:12px"><a href="https://wa.me/79643208255">WhatsApp</a> · <a href="https://t.me/romaluna">Telegram</a> · <a href="https://vk.ru/roma.luno">ВКонтакте</a> · MAX +7 964 320-82-55</p></div>
       <div><p>ИП Каменецкий Максим Александрович</p><p>ИНН 504106874779</p><p>ОГРНИП 319508100173016</p></div>
     </div>
